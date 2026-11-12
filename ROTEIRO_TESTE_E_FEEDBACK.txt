@@ -1,0 +1,52 @@
+ROTEIRO PARA MARIANA — RADIATION GUIDE 2.0.0-rc1
+
+1. ABERTURA
+Registrar sistema operacional, versão do Python e se a instalação abriu.
+Se houver falha, copiar somente a mensagem técnica, sem dados do paciente.
+
+2. CASOS SUGERIDOS
+Usar 3 a 5 exames autorizados para esse teste, sem alterar os originais:
+A) TC de crânio com imagens e RDSR, quando disponível.
+B) TC de abdome com imagens e RDSR, quando disponível.
+C) TC sem RDSR, para verificar os avisos de dados ausentes.
+D) Um estudo com várias fases/séries, para conferir a agregação de DLP.
+E) Reimportar um dos mesmos ZIPs: o histórico não deve duplicar o estudo.
+A presença de vários exames no mesmo ZIP deve gerar registros separados.
+
+3. COMPARAÇÃO
+No relatório do tomógrafo/PACS, anotar CTDIvol de cada aquisição, DLP total,
+unidades e fantoma, quando disponíveis. O CTDIvol mostrado pelo app é o maior
+valor representativo entre aquisições não localizadoras; não é soma nem média
+de todo o estudo. Sem RDSR, o app usa CTDIvol representativo por evento/série
+quando existente no cabeçalho e mantém DLP indisponível.
+SSDE exige Dw e fantoma compatíveis. Se ausentes, deve ficar não calculada.
+Não comparar SSDE com dose por órgão. Se o aparelho já mostrar SSDE, registrar
+qual tamanho/método ele usou antes de comparar.
+
+4. CONFERIR NA TELA E NO PDF
+- Quantidade e região dos estudos importados.
+- Nome e identificadores diretos não aparecem: o app deve usar pseudônimo.
+- CTDIvol e DLP coincidem com as grandezas correspondentes da fonte?
+- Ausência de dados está explícita, sem zeros ou classificação normal indevida?
+- PDF abre, tem texto legível e repete os resultados da tela?
+- Reimportação evita duplicação? Há demora, travamento ou mensagem confusa?
+
+FICHA DE FEEDBACK (copiar e preencher, uma por caso)
+Versão do app: 2.0.0-rc1
+Sistema operacional / Python:
+Código escolhido para o teste (CASO_01 etc.; sem nome ou prontuário):
+Região / adulto ou pediátrico:
+Fabricante/modelo do tomógrafo (opcional):
+Imagens CT presentes? RDSR incluído?
+CTDIvol na fonte (aquisição correspondente, mGy):
+CTDIvol no app (mGy):
+DLP total na fonte (mGy.cm):
+DLP total no app (mGy.cm):
+Dw/fantoma disponíveis? SSDE foi calculada ou ficou indisponível?
+PDF abriu? Tela e PDF coincidiram?
+Reimportação duplicou o estudo?
+Falhas ou sugestões:
+
+Compartilhar a ficha sem identificação do paciente. Se precisar de imagem de
+uma falha, recortar/ocultar nome, data de nascimento, prontuário e demais dados
+identificadores antes do envio. Não enviar os exames ou o banco como feedback.

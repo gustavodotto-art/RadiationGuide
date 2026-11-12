@@ -1,0 +1,63 @@
+RADIATION GUIDE 2.0.0-rc1 — PACOTE EXPERIMENTAL PARA TESTE
+12/11/2026
+
+OBJETIVO
+Testar importação local de DICOM de TC, extração de dados de dose disponíveis,
+histórico por pseudônimo e relatório PDF. A versão ainda está em avaliação.
+
+COMO ABRIR
+1. Extraia o ZIP inteiro para uma pasta nova, com permissão de gravação.
+   Não misture com a versão anterior e não copie o banco antigo.
+2. É necessário Python 3.10 a 3.13 instalado (https://www.python.org/downloads/).
+   No Windows, habilite a opção de adicionar Python ao PATH na instalação.
+3. No Windows, execute ABRIR_WINDOWS.bat.
+   Alternativa no Terminal, dentro da pasta: python3 INICIAR.py
+4. A primeira abertura instala as dependências e precisa de internet.
+   Depois da instalação, a análise é local e pode funcionar sem internet.
+5. Acesse http://127.0.0.1:5050. Mantenha a janela do Terminal aberta.
+6. Escolha o ZIP DICOM exportado do PACS e clique em Analisar localmente.
+   Para testar dose, inclua o relatório estruturado de dose RDSR na exportação,
+   quando disponível. PDF ou captura de tela do relatório não substituem o RDSR.
+7. Confira os resultados e clique em Baixar relatório PDF.
+8. Encerre com Ctrl+C no Terminal. Para abrir novamente, use o mesmo script.
+
+O QUE FOI ALTERADO
+- Retiradas estimativas por órgão, dose efetiva e chamadas externas de IA.
+- SSDE só é exibida quando os dados e o método são compatíveis; não se
+  estima diâmetro a partir de peso nem se substitui SSDE ausente por CTDIvol.
+- RDSR é priorizado; cabeçalhos CT são alternativa. DLP não é inventado a
+  partir do comprimento de séries reconstruídas.
+- Histórico usa pseudônimos locais; reimportar o mesmo estudo não duplica.
+- Campos ausentes ficam indisponíveis; ausência nunca significa dose zero.
+- Referências e triagem não são limites individuais de dose ou veredito de
+  conformidade. DRL requer comparação de medianas por protocolo/população.
+
+DADOS LOCAIS
+O banco e a chave de pseudonimização ficam em _runtime_v2/data.
+Proteja essa pasta: os dados são pseudonimizados, não anônimos. Não envie o
+banco, a chave ou DICOMs por WhatsApp para dar feedback. O app não grava os
+DICOMs importados permanentemente; a cópia original escolhida continua no
+computador de origem. Os PDFs são salvos onde o navegador indicar.
+
+LIMITES DO PACOTE
+- Aceita ZIP ou DICOM único com CT clássico/Enhanced CT e dose RDSR.
+- Até 512 MiB por envio; até 20.000 arquivos e 8 GiB descompactados.
+- Não lê dose de PDFs, imagens de dose, OCR ou campos privados de fabricantes.
+- Em Enhanced CT, não foi validada extração de dose por frame. Campos apenas
+  internos aos frames podem aparecer indisponíveis.
+- Referências automáticas restritas às populações adultas reconhecidas
+  (crânio/abdome e peso/altura compatíveis). Pediatria requer revisão própria.
+- Não importa banco legado automaticamente. Não é um instalador nativo,
+  não inclui Python e não integra nem altera o PACS.
+- Validado localmente em Python 3.12: 42 testes automatizados, um arquivo
+  clínico sem dados de dose, PDF e reimportação. Instalação em Windows/Linux
+  e acurácia com exames clínicos contendo RDSR ainda precisam de teste.
+
+ROTEIRO E FEEDBACK
+Siga ROTEIRO_TESTE_E_FEEDBACK.txt. Comece com poucos exames de TC do PACS,
+preferindo um com RDSR e outro sem. Compare os números com sua fonte original.
+
+USO E AUTORIA
+Código publicado sob a licença MIT. Consulte LICENSE.
+Copyright (c) 2026 Radiation Guide contributors.
+Não é declaração de homologação, validação clínica ou aprovação institucional.

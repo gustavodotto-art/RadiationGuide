@@ -1,0 +1,18 @@
+RADIATION GUIDE 2.0.0-rc1 — WINDOWS 10 E 11
+Pacote experimental, preparado para Windows 10/11 de 64 bits.
+Compatibilidade ainda depende do teste no computador de destino.
+
+1. Extraia o ZIP inteiro, usando Extrair tudo no Explorador de Arquivos.
+2. Instale Python de 64 bits de https://www.python.org/downloads/windows/,
+   versão 3.12 ou 3.13. Habilite a opção Add python.exe to PATH.
+   O pacote foi testado localmente com Python 3.12.
+3. Abra ABRIR_WINDOWS.bat. A instalação inicial precisa de internet.
+4. Quando iniciar, abra http://127.0.0.1:5050 no navegador.
+5. Importe o ZIP DICOM e siga ROTEIRO_TESTE_E_FEEDBACK.txt.
+6. Mantenha a janela preta aberta; Ctrl+C encerra o aplicativo.
+
+Não é um .exe independente: o ZIP inclui o código e instala bibliotecas em
+uma pasta local. Não foi verificado em versões futuras do Windows.
+Não exclua ou copie a pasta _runtime_v2 para compartilhar o programa:
+ela contém o banco e a chave de pseudonimização.
+Leia LEIA_ME.txt para os limites da versão e o funcionamento dos cálculos.

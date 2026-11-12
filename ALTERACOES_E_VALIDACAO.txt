@@ -1,0 +1,24 @@
+VERSÃO DE AVALIAÇÃO 2.0.0-rc1 — 12/11/2026
+
+Principais mudanças: módulo dosimétrico limitado às grandezas suportadas;
+remoção de dose por órgão e integração externa de IA; pseudônimos HMAC locais;
+banco novo separado; deduplicação; PDF com fontes incorporadas; triagem com
+referências explicitadas; rejeição de unidades/códigos SR não reconhecidos.
+
+Evidências locais:
+42 testes automatizados passaram em Python 3.12.
+Um ZIP clínico real de 102.694.049 bytes, 22 DICOMs (2 Enhanced CT e 20 SC),
+foi importado com sucesso; um estudo, PDF pseudonimizado, sem duplicação na
+reimportação e sem DICOM temporário retido. O pacote não tinha CTDIvol, RDSR
+nem Dw. CTDIvol/DLP/SSDE ficaram indisponíveis, como esperado.
+Isso não valida acurácia dosimétrica em pacientes. Origem HUSM não confirmada.
+
+Fontes dos métodos implementados:
+AAPM 220: https://pmc.ncbi.nlm.nih.gov/articles/PMC4991550/
+AAPM 293: https://www.aapm.org/pubs/reports/RPT_293.pdf
+ICRP 135: https://www.icrp.org/publication.asp?id=ICRP+Publication+135
+ANVISA IN 93/2021, Anexo II, republicação em 07/07/2022.
+
+Pendências: comparação com relatórios de dose reais do PACS; teste em máquina
+da usuária; cobertura de fabricantes e Enhanced CT por frame; revisão dos
+autores. Código distribuído sob a licença MIT; consulte LICENSE e README.md.
